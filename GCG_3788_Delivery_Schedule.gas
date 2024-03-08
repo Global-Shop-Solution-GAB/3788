@@ -1,0 +1,650 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Delivery Schedule")
+gui.SS_Form1..size(6160,5525)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1.lbl_dtpStart.create(label,"Start Date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpStart.create(datepicker)
+gui.SS_Form1.dtpStart.visible(True)
+gui.SS_Form1.dtpStart.size(1800,345)
+gui.SS_Form1.dtpStart.position(100,335)
+gui.SS_Form1.dtpStart.enabled(True)
+gui.SS_Form1.dtpStart.fontname("Arial")
+gui.SS_Form1.lbl_dtpStop.create(label,"Stop Date",True,1800,200,1,1985,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpStop.create(datepicker)
+gui.SS_Form1.dtpStop.visible(True)
+gui.SS_Form1.dtpStop.size(1800,345)
+gui.SS_Form1.dtpStop.position(1985,335)
+gui.SS_Form1.dtpStop.enabled(True)
+gui.SS_Form1.dtpStop.fontname("Arial")
+gui.SS_Form1.lbl_txtBegCust.create(label,"Beginning Customer",True,1800,200,1,100,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtBegCust.create(textbox,"",True,1800,330,1,100,1050,True,0,Arial,8,16777215,1)
+Gui.SS_Form1.cmd_txtBegCust.create(button)
+gui.SS_Form1.cmd_txtBegCust.Caption("^")
+gui.SS_Form1.cmd_txtBegCust.visible(True)
+gui.SS_Form1.cmd_txtBegCust.size(330,330)
+gui.SS_Form1.cmd_txtBegCust.position(1985,1050)
+gui.SS_Form1.cmd_txtBegCust.enabled(True)
+gui.SS_Form1.cmd_txtBegCust.fontname("Arial")
+gui.SS_Form1.cmd_txtBegCust.fontsize(8)
+gui.SS_Form1.cmd_txtBegCust.event(click,cmd_txtbegcust_click)
+gui.SS_Form1.lbl_txtEndCust.create(label,"Ending Customer",True,1800,200,1,2455,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtEndCust.create(textbox,"",True,1800,330,1,2455,1050,True,0,Arial,8,16777215,1)
+Gui.SS_Form1.cmd_txtEndCust.create(button)
+gui.SS_Form1.cmd_txtEndCust.Caption("^")
+gui.SS_Form1.cmd_txtEndCust.visible(True)
+gui.SS_Form1.cmd_txtEndCust.size(330,330)
+gui.SS_Form1.cmd_txtEndCust.position(4340,1050)
+gui.SS_Form1.cmd_txtEndCust.enabled(True)
+gui.SS_Form1.cmd_txtEndCust.fontname("Arial")
+gui.SS_Form1.cmd_txtEndCust.fontsize(8)
+gui.SS_Form1.cmd_txtEndCust.event(click,cmd_txtendcust_click)
+gui.SS_Form1.chkAll.create(checkbox)
+gui.SS_Form1.chkAll.Caption("All Customers")
+gui.SS_Form1.chkAll.visible(True)
+gui.SS_Form1.chkAll.size(1800,300)
+gui.SS_Form1.chkAll.position(100,1385)
+gui.SS_Form1.chkAll.enabled(True)
+gui.SS_Form1.chkAll.fontname("Arial")
+gui.SS_Form1.chkAll.fontsize(8)
+gui.SS_Form1.chkAll.event(click,chkall_click)
+gui.SS_Form1.lvwCust.create(listview)
+gui.SS_Form1.lvwCust.view(3)
+gui.SS_Form1.lvwCust.visible(True)
+gui.SS_Form1.lvwCust.size(5810,2000)
+gui.SS_Form1.lvwCust.position(100,1935)
+gui.SS_Form1.lvwCust.enabled(True)
+gui.SS_Form1.lvwCust.fontname("Arial")
+gui.SS_Form1.lvwCust.fontsize(8)
+gui.SS_Form1.lvwCust.addlistviewcolumn("Beginning Customer",2705,0)
+gui.SS_Form1.lvwCust.addlistviewcolumn("Ending Customer",2705,0)
+Gui.SS_Form1.cmd_lvwCustAdd.create(button)
+gui.SS_Form1.cmd_lvwCustAdd.Caption("Add")
+gui.SS_Form1.cmd_lvwCustAdd.visible(True)
+gui.SS_Form1.cmd_lvwCustAdd.size(1000,330)
+gui.SS_Form1.cmd_lvwCustAdd.position(4810,1050)
+gui.SS_Form1.cmd_lvwCustAdd.enabled(True)
+gui.SS_Form1.cmd_lvwCustAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvwCustAdd.fontsize(8)
+gui.SS_Form1.cmd_lvwCustadd.event(click,cmd_lvwcustadd_click)
+Gui.SS_Form1.cmd_lvwCustDelete.create(button)
+gui.SS_Form1.cmd_lvwCustDelete.Caption("Delete")
+gui.SS_Form1.cmd_lvwCustDelete.visible(True)
+gui.SS_Form1.cmd_lvwCustDelete.size(1000,330)
+gui.SS_Form1.cmd_lvwCustDelete.position(100,4020)
+gui.SS_Form1.cmd_lvwCustDelete.enabled(True)
+gui.SS_Form1.cmd_lvwCustDelete.fontname("Arial")
+gui.SS_Form1.cmd_lvwCustDelete.fontsize(8)
+gui.SS_Form1.cmd_lvwCustdelete.event(click,cmd_lvwcustdelete_click)
+Gui.SS_Form1.cmd_lvwCustClear.create(button)
+gui.SS_Form1.cmd_lvwCustClear.Caption("Clear")
+gui.SS_Form1.cmd_lvwCustClear.visible(True)
+gui.SS_Form1.cmd_lvwCustClear.size(1000,330)
+gui.SS_Form1.cmd_lvwCustClear.position(1185,4020)
+gui.SS_Form1.cmd_lvwCustClear.enabled(True)
+gui.SS_Form1.cmd_lvwCustClear.fontname("Arial")
+gui.SS_Form1.cmd_lvwCustClear.fontsize(8)
+gui.SS_Form1.cmd_lvwCustclear.event(click,cmd_lvwcustclear_click)
+gui.SS_Form1.cmdPrint.create(button)
+gui.SS_Form1.cmdPrint.Caption("Print")
+gui.SS_Form1.cmdPrint.visible(True)
+gui.SS_Form1.cmdPrint.size(1000,360)
+gui.SS_Form1.cmdPrint.position(100,4550)
+gui.SS_Form1.cmdPrint.enabled(True)
+gui.SS_Form1.cmdPrint.fontname("Arial")
+gui.SS_Form1.cmdPrint.fontsize(8)
+gui.SS_Form1.cmdPrint.event(click,cmdprint_click)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.iKey.Declare(Long,0)
+Variable.UDT.uSched.Define("Terminal",String)
+Variable.UDT.uSched.Define("OrderNo",String)
+Variable.UDT.uSched.Define("OrderLn",String)
+Variable.UDT.uSched.Define("DueDate",Date)
+Variable.UDT.uSched.Define("CustPO",String)
+Variable.UDT.uSched.Define("Part",String)
+Variable.UDT.uSched.Define("Description",String)
+Variable.UDT.uSched.Define("Cust",String)
+Variable.UDT.uSched.Define("Job",String)
+Variable.UDT.uSched.Define("Suffix",String)
+Variable.UDT.uSched.Define("QtyCmpl",Float)
+Variable.UDT.uSched.Define("QtyWO",Float)
+Variable.UDT.uSched.Define("QtyShip",Float)
+Variable.UDT.uSched.Define("QtyOrd",Float)
+Variable.uGlobal.uSched.Declare("uSched")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: mla
+'Project Start Date: 10/25/2011
+'Notes:
+'  Sicom
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+Gui.SS_Form1..Show
+
+Program.Sub.Main.End
+
+program.sub.cmd_txtbegcust_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtbegcust_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtBegCust.Text(V.Local.sRet(0).Trim)
+	Gui.SS_Form1.txtEndCust.Text(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtbegcust_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_txtbegcust_click.end
+
+program.sub.cmd_txtendcust_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtendcust_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtEndCust.Text(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtendcust_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_txtendcust_click.end
+
+program.sub.cmd_lvwcustadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwcustadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Math.Add(V.Global.iKey,1,V.Global.iKey)
+Gui.SS_Form1.lvwCust.AddListItem(V.Global.iKey,V.Screen.SS_Form1!txtBegCust.Text)
+Gui.SS_Form1.lvwCust.SetListItemSubItemText(V.Global.iKey,1,V.Screen.SS_Form1!txtEndCust.Text)
+Gui.SS_Form1.txtBegCust.Text("")
+Gui.SS_Form1.txtEndCust.Text("")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwcustadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_lvwcustadd_click.end
+
+program.sub.chkall_click.start
+F.Intrinsic.Control.SetErrorHandler("chkall_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chkAll.Value,=,1)
+	Gui.SS_Form1.txtBegCust.Enabled(False)
+	Gui.SS_Form1.txtBegCust.Text("")
+	Gui.SS_Form1.txtEndCust.Enabled(False)
+	Gui.SS_Form1.txtEndCust.Text("")
+	Gui.SS_Form1.cmd_lvwCustAdd.Enabled(False)
+	Gui.SS_Form1.cmd_lvwCustClear.Enabled(False)
+	Gui.SS_Form1.cmd_lvwCustDelete.Enabled(False)
+	Gui.SS_Form1.lvwCust.Enabled(False)
+	Gui.SS_Form1.cmd_txtBegCust.Enabled(False)
+	Gui.SS_Form1.cmd_txtEndCust.Enabled(False)
+F.Intrinsic.Control.Else
+	Gui.SS_Form1.txtBegCust.Enabled(True)
+	Gui.SS_Form1.txtEndCust.Enabled(True)
+	Gui.SS_Form1.cmd_lvwCustAdd.Enabled(True)
+	Gui.SS_Form1.cmd_lvwCustClear.Enabled(True)
+	Gui.SS_Form1.cmd_lvwCustDelete.Enabled(True)
+	Gui.SS_Form1.lvwCust.Enabled(True)
+	Gui.SS_Form1.cmd_txtBegCust.Enabled(True)
+	Gui.SS_Form1.cmd_txtEndCust.Enabled(True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chkall_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.chkall_click.end
+
+program.sub.cmd_lvwcustdelete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwcustdelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iKey.Declare(Long)
+
+V.Local.iKey.Set(V.Screen.SS_Form1!lvwCust.SelectedItemKey)
+Gui.SS_Form1.lvwCust.RemoveItem(V.Local.iKey)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwcustdelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_lvwcustdelete_click.end
+
+program.sub.cmd_lvwcustclear_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwcustclear_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.lvwCust.ClearItems
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwcustclear_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_lvwcustclear_click.end
+
+program.sub.cmdprint_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprint_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+Gui.SS_Form1..Visible(False)
+F.Intrinsic.String.Concat("Delete GCG_3788_Delivry_Sch where Terminal = '",V.Caller.Terminal,"'",V.Local.sSql)
+F.ODBC.Connection!con.Execute(V.Local.sSql)
+F.Intrinsic.Control.CallSub(Loadudt)
+F.Intrinsic.Control.CallSub(Loadrst)
+F.Intrinsic.Control.CallSub(Callbi)
+F.Intrinsic.Control.CallSub(Ss_form1_unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdprint_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdprint_click.end
+
+program.sub.ss_form1_unload.start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+program.sub.ss_form1_unload.end
+
+Program.Sub.LoadUDT.Start
+F.Intrinsic.Control.SetErrorHandler("LoadUDT_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.dStart.Declare(Date)
+V.Local.dStop.Declare(Date)
+V.Local.iUB.Declare(Long)
+V.Local.i.Declare(Long)
+V.Local.sCustList.Declare(String)
+V.Local.sCust.Declare(String)
+V.Local.iOrd.Declare(Long)
+V.Local.sRet.Declare(String)
+
+V.uGlobal.uSched.Redim(-1,-1)
+V.Local.dStart.Set(V.Screen.SS_Form1!dtpStart.Value)
+V.Local.dStop.Set(V.Screen.SS_Form1!dtpStop.Value)
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chkAll.Value,=,1)
+	F.Intrinsic.String.Concat("Select ORDER_NO, RECORD_NO, DATE_ITEM_PROM, PART, DESCRIPTION, CUSTOMER, QTY_ORDERED, QTY_SHIPPED  from V_ORDER_LINES where DATE_ITEM_PROM between '",V.Local.dStart.PervasiveDate,"' and '",V.Local.dStop.PervasiveDate,"' and QTY_SHIPPED < QTY_ORDERED",V.Local.sSql)
+	F.ODBC.Connection!con.OpenRecordsetRO("rstOrd",V.Local.sSql)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rstOrd.EOF,=,True)
+		F.Intrinsic.String.Concat("Select JOB, SUFFIX, ORDER_NO, ORDER_LINE from V_ORDER_TO_WO where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"' and ORDER_LINE = '",V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO,"'",V.Local.sSql)
+		F.ODBC.Connection!con.OpenRecordsetRO("rstOrdWO",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rstOrdWO.EOF,=,False)
+			F.Intrinsic.String.Concat("Select JOB, SUFFIX, QTY_COMPLETED, QTY_ORDER FROM V_JOB_HEADER where JOB = '",V.ODBC.con!rstOrdWO.FieldValTrim!JOB,"' and SUFFIX = '",V.ODBC.con!rstOrdWO.FieldValTrim!SUFFIX,"'",V.Local.sSql)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstJob",V.Local.sSql)
+			F.Intrinsic.Control.If(V.ODBC.con!rstJob.EOF,=,False)
+				F.Intrinsic.Variable.UDTMultiSeek(V.uGlobal.uSched!OrderNo,V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,V.uGlobal.uSched!OrderLn,V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO,V.uGlobal.uSched!Job,V.ODBC.con!rstJob.FieldValTrim!JOB,V.uGlobal.uSched!Suffix,V.ODBC.con!rstJob.FieldValTrim!SUFFIX,V.Local.sRet)
+				F.Intrinsic.Control.If(V.Local.sRet,=,"")
+					V.Local.iUB.Set(V.uGlobal.uSched.UBound)
+					F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,=,-1)
+						V.uGlobal.uSched.Redim(0,0)
+					F.Intrinsic.Control.EndIf
+					F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+					V.uGlobal.uSched.RedimPreserve(V.uGlobal.uSched.LBound,V.Local.iUB)
+					V.uGlobal.uSched(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+					V.uGlobal.uSched(V.Local.iUB)!OrderNo.Set(V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO)
+					V.uGlobal.uSched(V.Local.iUB)!OrderLn.Set(V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO)
+					V.uGlobal.uSched(V.Local.iUB)!DueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ITEM_PROM)
+					F.Intrinsic.String.Concat("Select CUSTOMER_PO from V_ORDER_HEADER where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"'",V.Local.sSql)
+					F.ODBC.Connection!con.OpenRecordsetRO("rstPO",V.Local.sSql)
+					F.Intrinsic.Control.If(V.ODBC.con!rstPO.EOF,=,False)
+						V.uGlobal.uSched(V.Local.iUB)!CustPO.Set(V.ODBC.con!rstPO.FieldValTrim!CUSTOMER_PO)
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rstPO.Close
+					V.uGlobal.uSched(V.Local.iUB)!Part.Set(V.ODBC.con!rstOrd.FieldValTrim!PART)
+					V.uGlobal.uSched(V.Local.iUB)!Description.Set(V.ODBC.con!rstOrd.FieldValTrim!DESCRIPTION)
+					V.uGlobal.uSched(V.Local.iUB)!Cust.Set(V.ODBC.con!rstOrd.FieldValTrim!CUSTOMER)
+					V.uGlobal.uSched(V.Local.iUB)!Job.Set(V.ODBC.con!rstJob.FieldValTrim!JOB)
+					V.uGlobal.uSched(V.Local.iUB)!Suffix.Set(V.ODBC.con!rstJob.FieldValTrim!SUFFIX)
+					V.uGlobal.uSched(V.Local.iUB)!QtyCmpl.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_COMPLETED)
+					V.uGlobal.uSched(V.Local.iUB)!QtyWO.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_ORDER)
+					V.uGlobal.uSched(V.Local.iUB)!QtyOrd.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_ORDERED)
+					V.uGlobal.uSched(V.Local.iUB)!QtyShip.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_SHIPPED)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstJob.Close
+			F.ODBC.con!rstOrdWO.Close
+		F.Intrinsic.Control.Else
+			F.ODBC.con!rstOrdWO.Close
+			F.Intrinsic.String.Concat("Select WO, SUFFIX, ORDER_NO, ORDER_LINE from V_COST_GOODS_SOLD where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"' and ORDER_LINE = '",V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO,"'",V.Local.sSql)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstOrdWO",V.Local.sSql)
+			F.Intrinsic.Control.If(V.ODBC.con!rstOrdWO.EOF,=,False)
+				F.Intrinsic.String.Concat("Select JOB, SUFFIX, QTY_COMPLETED, QTY_ORDER FROM V_JOB_HEADER where JOB = '",V.ODBC.con!rstOrdWO.FieldValTrim!WO,"' and SUFFIX = '",V.ODBC.con!rstOrdWO.FieldValTrim!SUFFIX,"'",V.Local.sSql)
+				F.ODBC.Connection!con.OpenRecordsetRO("rstJob",V.Local.sSql)
+				F.Intrinsic.Control.If(V.ODBC.con!rstJob.EOF,=,False)
+					F.Intrinsic.Variable.UDTMultiSeek(V.uGlobal.uSched!OrderNo,V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,V.uGlobal.uSched!OrderLn,V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO,V.uGlobal.uSched!Job,V.ODBC.con!rstJob.FieldValTrim!JOB,V.uGlobal.uSched!Suffix,V.ODBC.con!rstJob.FieldValTrim!SUFFIX,V.Local.sRet)
+					F.Intrinsic.Control.If(V.Local.sRet,=,"")
+						V.Local.iUB.Set(V.uGlobal.uSched.UBound)
+						F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,=,-1)
+							V.uGlobal.uSched.Redim(0,0)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+						V.uGlobal.uSched.RedimPreserve(V.uGlobal.uSched.LBound,V.Local.iUB)
+						V.uGlobal.uSched(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uSched(V.Local.iUB)!OrderNo.Set(V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO)
+						V.uGlobal.uSched(V.Local.iUB)!OrderLn.Set(V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO)
+						V.uGlobal.uSched(V.Local.iUB)!DueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ITEM_PROM)
+						F.Intrinsic.String.Concat("Select CUSTOMER_PO from V_ORDER_HEADER where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"'",V.Local.sSql)
+						F.ODBC.Connection!con.OpenRecordsetRO("rstPO",V.Local.sSql)
+						F.Intrinsic.Control.If(V.ODBC.con!rstPO.EOF,=,False)
+							V.uGlobal.uSched(V.Local.iUB)!CustPO.Set(V.ODBC.con!rstPO.FieldValTrim!CUSTOMER_PO)
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstPO.Close
+						V.uGlobal.uSched(V.Local.iUB)!Part.Set(V.ODBC.con!rstOrd.FieldValTrim!PART)
+						V.uGlobal.uSched(V.Local.iUB)!Description.Set(V.ODBC.con!rstOrd.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uSched(V.Local.iUB)!Cust.Set(V.ODBC.con!rstOrd.FieldValTrim!CUSTOMER)
+						V.uGlobal.uSched(V.Local.iUB)!Job.Set(V.ODBC.con!rstJob.FieldValTrim!JOB)
+						V.uGlobal.uSched(V.Local.iUB)!Suffix.Set(V.ODBC.con!rstJob.FieldValTrim!SUFFIX)
+						V.uGlobal.uSched(V.Local.iUB)!QtyCmpl.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_COMPLETED)
+						V.uGlobal.uSched(V.Local.iUB)!QtyWO.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_ORDER)
+						V.uGlobal.uSched(V.Local.iUB)!QtyOrd.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_ORDERED)
+						V.uGlobal.uSched(V.Local.iUB)!QtyShip.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_SHIPPED)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstJob.Close
+			F.Intrinsic.Control.Else
+				V.Local.iUB.Set(V.uGlobal.uSched.UBound)
+				F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,=,-1)
+					V.uGlobal.uSched.Redim(0,0)
+				F.Intrinsic.Control.EndIf
+				F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+				V.uGlobal.uSched.RedimPreserve(V.uGlobal.uSched.LBound,V.Local.iUB)
+				V.uGlobal.uSched(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+				V.uGlobal.uSched(V.Local.iUB)!OrderNo.Set(V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO)
+				V.uGlobal.uSched(V.Local.iUB)!OrderLn.Set(V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO)
+				V.uGlobal.uSched(V.Local.iUB)!DueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ITEM_PROM)
+				F.Intrinsic.String.Concat("Select CUSTOMER_PO from V_ORDER_HEADER where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"'",V.Local.sSql)
+				F.ODBC.Connection!con.OpenRecordsetRO("rstPO",V.Local.sSql)
+				F.Intrinsic.Control.If(V.ODBC.con!rstPO.EOF,=,False)
+					V.uGlobal.uSched(V.Local.iUB)!CustPO.Set(V.ODBC.con!rstPO.FieldValTrim!CUSTOMER_PO)
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstPO.Close
+				V.uGlobal.uSched(V.Local.iUB)!Part.Set(V.ODBC.con!rstOrd.FieldValTrim!PART)
+				V.uGlobal.uSched(V.Local.iUB)!Description.Set(V.ODBC.con!rstOrd.FieldValTrim!DESCRIPTION)
+				V.uGlobal.uSched(V.Local.iUB)!Cust.Set(V.ODBC.con!rstOrd.FieldValTrim!CUSTOMER)
+				V.uGlobal.uSched(V.Local.iUB)!QtyOrd.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_ORDERED)
+				V.uGlobal.uSched(V.Local.iUB)!QtyShip.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_SHIPPED)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstOrdWO.Close
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rstOrd.MoveNext
+	F.Intrinsic.Control.Loop
+	F.ODBC.con!rstOrd.Close
+F.Intrinsic.Control.Else
+	Gui.SS_Form1.lvwCust.RetrieveAllListItems(V.Local.sCustList)
+	F.Intrinsic.Control.If(V.Local.sCustList,<>,"***NORETURN***")
+		F.Intrinsic.String.Split(V.Local.sCustList,"*!*",V.Local.sCustList)
+		F.Intrinsic.Control.For(V.Local.i,V.Local.sCustList.LBound,V.Local.sCustList.UBound,1)
+			Gui.SS_Form1.lvwCust.ListItemKeyToOrdinal(V.Local.sCustList(V.Local.i),V.Local.iOrd)
+			V.Local.sCust.Set(V.Screen.SS_Form1!lvwCust.ListItemTextExtended(V.Local.iOrd))
+			F.Intrinsic.String.Split(V.Local.sCust,"*!*",V.Local.sCust)
+			F.Intrinsic.String.Concat("Select ORDER_NO, RECORD_NO, DATE_ITEM_PROM, PART, DESCRIPTION, CUSTOMER, QTY_ORDERED, QTY_SHIPPED  from V_ORDER_LINES where CUSTOMER between '",V.Local.sCust(0),"' and '",V.Local.sCust(1),"' and DATE_ITEM_PROM between '",V.Local.dStart.PervasiveDate,"' and '",V.Local.dStop.PervasiveDate,"' and QTY_SHIPPED < QTY_ORDERED",V.Local.sSql)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstOrd",V.Local.sSql)
+			F.Intrinsic.Control.DoUntil(V.ODBC.con!rstOrd.EOF,=,True)
+				F.Intrinsic.String.Concat("Select JOB, SUFFIX, ORDER_NO, ORDER_LINE from V_ORDER_TO_WO where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"' and ORDER_LINE = '",V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO,"'",V.Local.sSql)
+				F.ODBC.Connection!con.OpenRecordsetRO("rstOrdWO",V.Local.sSql)
+				F.Intrinsic.Control.If(V.ODBC.con!rstOrdWO.EOF,=,False)
+					F.Intrinsic.String.Concat("Select JOB, SUFFIX, QTY_COMPLETED, QTY_ORDER FROM V_JOB_HEADER where JOB = '",V.ODBC.con!rstOrdWO.FieldValTrim!JOB,"' and SUFFIX = '",V.ODBC.con!rstOrdWO.FieldValTrim!SUFFIX,"'",V.Local.sSql)
+					F.ODBC.Connection!con.OpenRecordsetRO("rstJob",V.Local.sSql)
+					F.Intrinsic.Control.If(V.ODBC.con!rstJob.EOF,=,False)
+						V.Local.iUB.Set(V.uGlobal.uSched.UBound)
+						F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,=,-1)
+							V.uGlobal.uSched.Redim(0,0)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+						V.uGlobal.uSched.RedimPreserve(V.uGlobal.uSched.LBound,V.Local.iUB)
+						V.uGlobal.uSched(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uSched(V.Local.iUB)!OrderNo.Set(V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO)
+						V.uGlobal.uSched(V.Local.iUB)!OrderLn.Set(V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO)
+						V.uGlobal.uSched(V.Local.iUB)!DueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ITEM_PROM)
+						F.Intrinsic.String.Concat("Select CUSTOMER_PO from V_ORDER_HEADER where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"'",V.Local.sSql)
+						F.ODBC.Connection!con.OpenRecordsetRO("rstPO",V.Local.sSql)
+						F.Intrinsic.Control.If(V.ODBC.con!rstPO.EOF,=,False)
+							V.uGlobal.uSched(V.Local.iUB)!CustPO.Set(V.ODBC.con!rstPO.FieldValTrim!CUSTOMER_PO)
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstPO.Close
+						V.uGlobal.uSched(V.Local.iUB)!Part.Set(V.ODBC.con!rstOrd.FieldValTrim!PART)
+						V.uGlobal.uSched(V.Local.iUB)!Description.Set(V.ODBC.con!rstOrd.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uSched(V.Local.iUB)!Cust.Set(V.ODBC.con!rstOrd.FieldValTrim!CUSTOMER)
+						V.uGlobal.uSched(V.Local.iUB)!Job.Set(V.ODBC.con!rstJob.FieldValTrim!JOB)
+						V.uGlobal.uSched(V.Local.iUB)!Suffix.Set(V.ODBC.con!rstJob.FieldValTrim!SUFFIX)
+						V.uGlobal.uSched(V.Local.iUB)!QtyCmpl.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_COMPLETED)
+						V.uGlobal.uSched(V.Local.iUB)!QtyWO.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_ORDER)
+						V.uGlobal.uSched(V.Local.iUB)!QtyOrd.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_ORDERED)
+						V.uGlobal.uSched(V.Local.iUB)!QtyShip.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_SHIPPED)
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rstJob.Close
+					F.ODBC.con!rstOrdWO.Close
+				F.Intrinsic.Control.Else
+					F.ODBC.con!rstOrdWO.Close
+					F.Intrinsic.String.Concat("Select WO, SUFFIX, ORDER_NO, ORDER_LINE from V_COST_GOODS_SOLD where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"' and ORDER_LINE = '",V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO,"'",V.Local.sSql)
+					F.ODBC.Connection!con.OpenRecordsetRO("rstOrdWO",V.Local.sSql)
+					F.Intrinsic.Control.If(V.ODBC.con!rstOrdWO.EOF,=,False)
+						F.Intrinsic.String.Concat("Select JOB, SUFFIX, QTY_COMPLETED, QTY_ORDER FROM V_JOB_HEADER where JOB = '",V.ODBC.con!rstOrdWO.FieldValTrim!WO,"' and SUFFIX = '",V.ODBC.con!rstOrdWO.FieldValTrim!SUFFIX,"'",V.Local.sSql)
+						F.ODBC.Connection!con.OpenRecordsetRO("rstJob",V.Local.sSql)
+						F.Intrinsic.Control.If(V.ODBC.con!rstJob.EOF,=,False)
+							V.Local.iUB.Set(V.uGlobal.uSched.UBound)
+							F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,=,-1)
+								V.uGlobal.uSched.Redim(0,0)
+							F.Intrinsic.Control.EndIf
+							F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+							V.uGlobal.uSched.RedimPreserve(V.uGlobal.uSched.LBound,V.Local.iUB)
+							V.uGlobal.uSched(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+							V.uGlobal.uSched(V.Local.iUB)!OrderNo.Set(V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO)
+							V.uGlobal.uSched(V.Local.iUB)!OrderLn.Set(V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO)
+							V.uGlobal.uSched(V.Local.iUB)!DueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ITEM_PROM)
+							F.Intrinsic.String.Concat("Select CUSTOMER_PO from V_ORDER_HEADER where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"'",V.Local.sSql)
+							F.ODBC.Connection!con.OpenRecordsetRO("rstPO",V.Local.sSql)
+							F.Intrinsic.Control.If(V.ODBC.con!rstPO.EOF,=,False)
+								V.uGlobal.uSched(V.Local.iUB)!CustPO.Set(V.ODBC.con!rstPO.FieldValTrim!CUSTOMER_PO)
+							F.Intrinsic.Control.EndIf
+							F.ODBC.con!rstPO.Close
+							V.uGlobal.uSched(V.Local.iUB)!Part.Set(V.ODBC.con!rstOrd.FieldValTrim!PART)
+							V.uGlobal.uSched(V.Local.iUB)!Description.Set(V.ODBC.con!rstOrd.FieldValTrim!DESCRIPTION)
+							V.uGlobal.uSched(V.Local.iUB)!Cust.Set(V.ODBC.con!rstOrd.FieldValTrim!CUSTOMER)
+							V.uGlobal.uSched(V.Local.iUB)!Job.Set(V.ODBC.con!rstJob.FieldValTrim!JOB)
+							V.uGlobal.uSched(V.Local.iUB)!Suffix.Set(V.ODBC.con!rstJob.FieldValTrim!SUFFIX)
+							V.uGlobal.uSched(V.Local.iUB)!QtyCmpl.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_COMPLETED)
+							V.uGlobal.uSched(V.Local.iUB)!QtyWO.Set(V.ODBC.con!rstJob.FieldValFloat!QTY_ORDER)
+							V.uGlobal.uSched(V.Local.iUB)!QtyOrd.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_ORDERED)
+							V.uGlobal.uSched(V.Local.iUB)!QtyShip.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_SHIPPED)
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstJob.Close
+					F.Intrinsic.Control.Else
+						V.Local.iUB.Set(V.uGlobal.uSched.UBound)
+						F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,=,-1)
+							V.uGlobal.uSched.Redim(0,0)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+						V.uGlobal.uSched.RedimPreserve(V.uGlobal.uSched.LBound,V.Local.iUB)
+						V.uGlobal.uSched(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uSched(V.Local.iUB)!OrderNo.Set(V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO)
+						V.uGlobal.uSched(V.Local.iUB)!OrderLn.Set(V.ODBC.con!rstOrd.FieldValTrim!RECORD_NO)
+						V.uGlobal.uSched(V.Local.iUB)!DueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ITEM_PROM)
+						F.Intrinsic.String.Concat("Select CUSTOMER_PO from V_ORDER_HEADER where ORDER_NO = '",V.ODBC.con!rstOrd.FieldValTrim!ORDER_NO,"'",V.Local.sSql)
+						F.ODBC.Connection!con.OpenRecordsetRO("rstPO",V.Local.sSql)
+						F.Intrinsic.Control.If(V.ODBC.con!rstPO.EOF,=,False)
+							V.uGlobal.uSched(V.Local.iUB)!CustPO.Set(V.ODBC.con!rstPO.FieldValTrim!CUSTOMER_PO)
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstPO.Close
+						V.uGlobal.uSched(V.Local.iUB)!Part.Set(V.ODBC.con!rstOrd.FieldValTrim!PART)
+						V.uGlobal.uSched(V.Local.iUB)!Description.Set(V.ODBC.con!rstOrd.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uSched(V.Local.iUB)!Cust.Set(V.ODBC.con!rstOrd.FieldValTrim!CUSTOMER)
+						V.uGlobal.uSched(V.Local.iUB)!QtyOrd.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_ORDERED)
+						V.uGlobal.uSched(V.Local.iUB)!QtyShip.Set(V.ODBC.con!rstOrd.FieldValFloat!QTY_SHIPPED)
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rstOrdWO.Close
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstOrd.MoveNext
+			F.Intrinsic.Control.Loop
+			F.ODBC.con!rstOrd.Close
+		F.Intrinsic.Control.Next(V.Local.i)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadUDT_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadUDT.End
+
+Program.Sub.LoadRST.Start
+F.Intrinsic.Control.SetErrorHandler("LoadRST_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.i.Declare(Long)
+
+F.Intrinsic.Control.If(V.uGlobal.uSched.UBound,<>,-1)
+	V.Local.sSql.Set("Select * from GCG_3788_Delivry_Sch")
+	F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSql)
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uSched.LBound,V.uGlobal.uSched.UBound,1)
+		F.ODBC.con!rst.AddNew
+		F.ODBC.con!rst.Set!Terminal(V.uGlobal.uSched(V.Local.i)!Terminal)
+		F.ODBC.con!rst.Set!Order_Number(V.uGlobal.uSched(V.Local.i)!OrderNo)
+		F.ODBC.con!rst.Set!Order_Line(V.uGlobal.uSched(V.Local.i)!OrderLn)
+		F.ODBC.con!rst.Set!Date_Due(V.uGlobal.uSched(V.Local.i)!DueDate)
+		F.ODBC.con!rst.Set!Customer_PO(V.uGlobal.uSched(V.Local.i)!CustPO)
+		F.ODBC.con!rst.Set!Part(V.uGlobal.uSched(V.Local.i)!Part)
+		F.ODBC.con!rst.Set!Description(V.uGlobal.uSched(V.Local.i)!Description)
+		F.ODBC.con!rst.Set!Customer(V.uGlobal.uSched(V.Local.i)!Cust)
+		F.ODBC.con!rst.Set!Job(V.uGlobal.uSched(V.Local.i)!Job)
+		F.ODBC.con!rst.Set!Suffix(V.uGlobal.uSched(V.Local.i)!Suffix)
+		F.ODBC.con!rst.Set!Qty_Completed(V.uGlobal.uSched(V.Local.i)!QtyCmpl)
+		F.ODBC.con!rst.Set!Qty_WO(V.uGlobal.uSched(V.Local.i)!QtyWO)
+		F.ODBC.con!rst.Set!Qty_Shipped(V.uGlobal.uSched(V.Local.i)!QtyShip)
+		F.ODBC.con!rst.Set!Qty_Order(V.uGlobal.uSched(V.Local.i)!QtyOrd)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.Next(V.Local.i)
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadRST_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadRST.End
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sParam.Declare(String)
+V.Local.sParamVal.Declare(String)
+V.Local.iBI.Declare(Long)
+
+V.Local.sParam.Set("Terminal*!*StartDate*!*StopDate")
+F.Intrinsic.String.Concat(V.Caller.Terminal,"*!*",V.Screen.SS_Form1!dtpStart.Value,"*!*",V.Screen.SS_Form1!dtpStop.Value,V.Local.sParamVal)
+F.Intrinsic.String.Split(V.Local.sParam,"*!*",V.Local.sParam)
+F.Intrinsic.String.Split(V.Local.sParamVal,"*!*",V.Local.sParamVal)
+F.Global.BI.GetIDFromName("GCG_3788_BI_Delivery_Schedule.rpt",V.Local.iBI)
+F.Global.BI.PrintReport(V.Local.iBI,0,V.Local.sParam,V.Local.sParamVal,"",False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3788_Delivery_Schedule.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.CallBI.End
+
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Delivery Schedule
+SS_Form1.CTRL{{NAME::dtpStart\\TYPE::6\\CAPTION::Start Date\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::dtpStop\\TYPE::6\\CAPTION::Stop Date\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtBegCust\\TYPE::2\\CAPTION::Beginning Customer\\RANGE::lvwCust\\GROUP::2\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::txtEndCust\\TYPE::2\\CAPTION::Ending Customer\\RANGE::lvwCust\\GROUP::2\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::chkAll\\TYPE::9\\CAPTION::All Customers\\GROUP::-1\\SUBGROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::lvwCust\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmdPrint\\TYPE::5\\CAPTION::Print\\GROUP::-1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
